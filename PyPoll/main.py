@@ -1,5 +1,6 @@
 import os
 import csv
+import operator
 
 csv_file_path = os.path.join(".", "Resources", "election_data.csv")
 voteridsArray = []
@@ -16,8 +17,6 @@ with open(csv_file_path, newline="") as csvfile:
 
 	# Read the header row first (skip this part if there is no header)
 	csv_header = next(csvfile)
-	print(f"Header: {csv_header}")
-	print(f"csv reader: {csvreader}")
 
 	for row in csvreader:
 		# if not row[0] in voteridsArray:
@@ -37,12 +36,28 @@ idsSet = list(set(voteridsArray))
 candidatesSet = list(set(allVotedCandidates))
 
 for cand in candidatesSet:
-	totalsDictionary[cand] = 0
+	if cand=="Khan":
+		totalsDictionary[cand] = len(khanIds)
+	if cand=="Li":
+		totalsDictionary[cand] = len(liIds)
+	if cand=="O'Tooley":
+		totalsDictionary[cand] = len(otoolIds)
+	if cand=="Correy":
+		totalsDictionary[cand] = len(correyIds)
 
-print(f"total votes: {len(idsSet)}")
-print(f"all cand receiving votes: {candidatesSet}")
-print(f"totals dict: {totalsDictionary}")
-print(f"khan perc: {(len(khanIds)/len(idsSet))*100}%, total votes = {len(khanIds)}")
-print(f"li perc: {(len(liIds)/len(idsSet))*100}%, total votes = {len(liIds)}")
-print(f"o'tooley perc: {(len(otoolIds)/len(idsSet))*100}%, total votes = {len(otoolIds)}")
-print(f"correy perc: {(len(correyIds)/len(idsSet))*100}%, total votes = {len(correyIds)}")
+print("Election Results")
+print("----------------------------")
+print(f"Total Votes: {len(idsSet)}")
+print("----------------------------")
+# fix decimals
+print(f"Khan: {round((len(khanIds)/len(idsSet))*100)}%, total votes = {len(khanIds)}")
+print(f"Li: {round((len(liIds)/len(idsSet))*100)}%, total votes = {len(liIds)}")
+print(f"O'Tooley: {round((len(otoolIds)/len(idsSet))*100)}%, total votes = {len(otoolIds)}")
+print(f"Correy: {round((len(correyIds)/len(idsSet))*100)}%, total votes = {len(correyIds)}")
+print("----------------------------")
+
+max_value = max(totalsDictionary.values())  # maximum value
+max_keys = [k for k, v in totalsDictionary.items() if v == max_value] # getting all keys containing the `maximum`
+
+print(f"Winner: {max_keys[0]}")
+print("----------------------------")

@@ -16,8 +16,6 @@ with open(csv_file_path, newline="") as csvfile:
 
 	# Read the header row first (skip this part if there is no header)
 	csv_header = next(csvfile)
-	print(f"Header: {csv_header}")
-	print(f"csv reader: {csvreader}")
 
 	# Read through each row of data after the header
 	for row in csvreader:
@@ -33,10 +31,11 @@ with open(csv_file_path, newline="") as csvfile:
 			greatestDecMonth = row[0]
 
 avgTotal = netTotal/len(monthsArray)
-		
-print(f"how many months: {len(monthsArray)}")
-print(f"months array: {monthsArray}")
-print(f"net total: {netTotal}")
-print(f"avg total: {avgTotal}")
-print(f"greatest increase: {greatestIncrease} happened in: {greatestIncMonth}")
-print(f"greatest decrease: {greatestDecrease} happened in: {greatestDecMonth}")
+
+print("Financial Analysis")
+print("----------------------------")
+print(f"Total Months: {len(monthsArray)}")
+print(f"Total: ${netTotal}.00")
+print(f"Average Change: ${avgTotal}.00")
+print(f"Greatest Increase in Profits: {greatestIncMonth} (${greatestIncrease}.00)")
+print(f"Greatest Decrease in Profits: {greatestDecMonth} (${greatestDecrease}.00)")
