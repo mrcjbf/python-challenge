@@ -37,15 +37,10 @@ voteridsArray = khanIds+liIds+otoolIds+correyIds
 idsSet = list(set(voteridsArray))
 candidatesSet = list(set(allVotedCandidates))
 
-for cand in candidatesSet:
-	if cand=="Khan":
-		totalsDictionary[cand] = len(khanIds)
-	if cand=="Li":
-		totalsDictionary[cand] = len(liIds)
-	if cand=="O'Tooley":
-		totalsDictionary[cand] = len(otoolIds)
-	if cand=="Correy":
-		totalsDictionary[cand] = len(correyIds)
+totalsDictionary["Khan"] = len(khanIds)
+totalsDictionary["Li"] = len(liIds)
+totalsDictionary["O'Tooley"] = len(otoolIds)
+totalsDictionary["Correy"] = len(correyIds)
 
 max_value = max(totalsDictionary.values())  # maximum value
 max_keys = [k for k, v in totalsDictionary.items() if v == max_value] # getting all keys containing the `maximum`
