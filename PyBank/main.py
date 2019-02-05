@@ -10,7 +10,7 @@ greatestDecrease = 0
 greatestIncMonth = ""
 greatestDecMonth = ""
 
-createFile = input("Create a text file with output? Y or N")
+createFile = input("Create a text file with output? Y or N ")
 
 # Open and read csv
 with open(csv_file_path, newline="") as csvfile:
