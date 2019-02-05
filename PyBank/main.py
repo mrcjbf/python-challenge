@@ -10,6 +10,8 @@ greatestDecrease = 0
 greatestIncMonth = ""
 greatestDecMonth = ""
 
+createFile = input("Create a text file with output? Y or N")
+
 # Open and read csv
 with open(csv_file_path, newline="") as csvfile:
 	csvreader = csv.reader(csvfile, delimiter=",")
@@ -39,3 +41,14 @@ print(f"Total: ${netTotal}.00")
 print(f"Average Change: ${avgTotal}.00")
 print(f"Greatest Increase in Profits: {greatestIncMonth} (${greatestIncrease}.00)")
 print(f"Greatest Decrease in Profits: {greatestDecMonth} (${greatestDecrease}.00)")
+
+if createFile == "Y" or createFile == "y":
+	text_file = open("Output.txt", "w")
+	text_file.write("Financial Analysis\n")
+	text_file.write("----------------------------\n")
+	text_file.write(f"Total Months: {len(monthsArray)}\n")
+	text_file.write(f"Total: ${netTotal}.00\n")
+	text_file.write(f"Average Change: ${avgTotal}.00\n")
+	text_file.write(f"Greatest Increase in Profits: {greatestIncMonth} (${greatestIncrease}.00)\n")
+	text_file.write(f"Greatest Decrease in Profits: {greatestDecMonth} (${greatestDecrease}.00)\n")
+	text_file.close()

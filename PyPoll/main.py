@@ -11,6 +11,8 @@ liIds = []
 otoolIds = []
 correyIds = []
 
+createFile = input("Create a text file with output? Y or N ")
+
 # Open and read csv
 with open(csv_file_path, newline="") as csvfile:
 	csvreader = csv.reader(csvfile, delimiter=",")
@@ -45,6 +47,9 @@ for cand in candidatesSet:
 	if cand=="Correy":
 		totalsDictionary[cand] = len(correyIds)
 
+max_value = max(totalsDictionary.values())  # maximum value
+max_keys = [k for k, v in totalsDictionary.items() if v == max_value] # getting all keys containing the `maximum`
+
 print("Election Results")
 print("----------------------------")
 print(f"Total Votes: {len(idsSet)}")
@@ -55,9 +60,21 @@ print(f"Li: {round((len(liIds)/len(idsSet))*100)}%, total votes = {len(liIds)}")
 print(f"O'Tooley: {round((len(otoolIds)/len(idsSet))*100)}%, total votes = {len(otoolIds)}")
 print(f"Correy: {round((len(correyIds)/len(idsSet))*100)}%, total votes = {len(correyIds)}")
 print("----------------------------")
-
-max_value = max(totalsDictionary.values())  # maximum value
-max_keys = [k for k, v in totalsDictionary.items() if v == max_value] # getting all keys containing the `maximum`
-
 print(f"Winner: {max_keys[0]}")
 print("----------------------------")
+
+if createFile == "Y" or createFile == "y":
+	text_file = open("Output.txt", "w")
+	text_file.write("Election Results\n")
+	text_file.write("----------------------------\n")
+	text_file.write(f"Total Votes: {len(idsSet)}\n")
+	text_file.write("----------------------------\n")
+	# fix decimals
+	text_file.write(f"Khan: {round((len(khanIds)/len(idsSet))*100)}%, total votes = {len(khanIds)}\n")
+	text_file.write(f"Li: {round((len(liIds)/len(idsSet))*100)}%, total votes = {len(liIds)}\n")
+	text_file.write(f"O'Tooley: {round((len(otoolIds)/len(idsSet))*100)}%, total votes = {len(otoolIds)}\n")
+	text_file.write(f"Correy: {round((len(correyIds)/len(idsSet))*100)}%, total votes = {len(correyIds)}\n")
+	text_file.write("----------------------------\n")
+	text_file.write(f"Winner: {max_keys[0]}\n")
+	text_file.write("----------------------------\n")
+	text_file.close()
