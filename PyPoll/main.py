@@ -11,7 +11,7 @@ liIds = []
 otoolIds = []
 correyIds = []
 
-createFile = input("Create a text file with output? Y or N ")
+# createFile = input("Create a text file with output? Y or N ")
 
 # Open and read csv
 with open(csv_file_path, newline="") as csvfile:
@@ -58,18 +58,17 @@ print("----------------------------")
 print(f"Winner: {max_keys[0]}")
 print("----------------------------")
 
-if createFile == "Y" or createFile == "y":
-	text_file = open("Output.txt", "w")
-	text_file.write("Election Results\n")
-	text_file.write("----------------------------\n")
-	text_file.write(f"Total Votes: {len(idsSet)}\n")
-	text_file.write("----------------------------\n")
-	# fix decimals
-	text_file.write(f"Khan: {round((len(khanIds)/len(idsSet))*100)}% ({len(khanIds)})\n")
-	text_file.write(f"Correy: {round((len(correyIds)/len(idsSet))*100)}% ({len(correyIds)})\n")
-	text_file.write(f"Li: {round((len(liIds)/len(idsSet))*100)}% ({len(liIds)})\n")
-	text_file.write(f"O'Tooley: {round((len(otoolIds)/len(idsSet))*100)}% ({len(otoolIds)})\n")
-	text_file.write("----------------------------\n")
-	text_file.write(f"Winner: {max_keys[0]}\n")
-	text_file.write("----------------------------\n")
-	text_file.close()
+# if createFile == "Y" or createFile == "y":
+text_file = open("Output.txt", "w")
+text_file.write("Election Results\n")
+text_file.write("----------------------------\n")
+text_file.write(f"Total Votes: {len(idsSet)}\n")
+text_file.write("----------------------------\n")
+text_file.write(f"Khan: {round((len(khanIds)/len(idsSet))*100)}% ({len(khanIds)})\n")
+text_file.write(f"Correy: {round((len(correyIds)/len(idsSet))*100)}% ({len(correyIds)})\n")
+text_file.write(f"Li: {round((len(liIds)/len(idsSet))*100)}% ({len(liIds)})\n")
+text_file.write(f"O'Tooley: {round((len(otoolIds)/len(idsSet))*100)}% ({len(otoolIds)})\n")
+text_file.write("----------------------------\n")
+text_file.write(f"Winner: {max_keys[0]}\n")
+text_file.write("----------------------------\n")
+text_file.close()
