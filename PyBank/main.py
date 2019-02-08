@@ -22,9 +22,8 @@ with open(csv_file_path, newline="") as csvfile:
 	# Read through each row of data after the header
 	for row in csvreader:
 		currentTotal = int(row[1])
-		if not row[0] in monthsArray:
-			monthsArray.append(row[0])
-			netTotal = netTotal + currentTotal
+		monthsArray.append(row[0])
+		netTotal = netTotal + currentTotal
 		if int(row[1])>greatestIncrease:
 			greatestIncrease = int(row[1])
 			greatestIncMonth = row[0]
@@ -37,10 +36,10 @@ avgTotal = netTotal/len(monthsArray)
 print("Financial Analysis")
 print("----------------------------")
 print(f"Total Months: {len(monthsArray)}")
-print(f"Total: ${netTotal}.00")
+print(f"Total: ${netTotal}")
 print(f"Average Change: ${round(avgTotal,2)}\n")
-print(f"Greatest Increase in Profits: {greatestIncMonth} (${greatestIncrease}.00)")
-print(f"Greatest Decrease in Profits: {greatestDecMonth} (${greatestDecrease}.00)")
+print(f"Greatest Increase in Profits: {greatestIncMonth} (${greatestIncrease})")
+print(f"Greatest Decrease in Profits: {greatestDecMonth} (${greatestDecrease})")
 
 # if createFile == "Y" or createFile == "y":
 text_file = open("Output.txt", "w")
@@ -49,6 +48,6 @@ text_file.write("----------------------------\n")
 text_file.write(f"Total Months: {len(monthsArray)}\n")
 text_file.write(f"Total: ${netTotal}.00\n")
 text_file.write(f"Average Change: ${round(avgTotal,2)}\n")
-text_file.write(f"Greatest Increase in Profits: {greatestIncMonth} (${greatestIncrease}.00)\n")
-text_file.write(f"Greatest Decrease in Profits: {greatestDecMonth} (${greatestDecrease}.00)\n")
+text_file.write(f"Greatest Increase in Profits: {greatestIncMonth} (${greatestIncrease})\n")
+text_file.write(f"Greatest Decrease in Profits: {greatestDecMonth} (${greatestDecrease})\n")
 text_file.close()
